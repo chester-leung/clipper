@@ -211,7 +211,7 @@ def deploy_mxnet_model(
 
         # Saves data_shapes to mxnet_model_metadata.json
         with open(
-                os.path.join(serialization_dir, "mxnet_model_metadata.json"),
+                os.path.join(mxnet_model_save_loc, "mxnet_model_metadata.json"),
                 "w") as f:
             json.dump({"data_shapes": mxnet_data_shapes}, f)
 
