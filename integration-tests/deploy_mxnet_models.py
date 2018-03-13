@@ -99,7 +99,6 @@ if __name__ == "__main__":
         train_path = os.path.join(cur_dir, "data/train.data")
         data_iter = mx.io.CSVIter(
             data_csv=train_path, data_shape=(785, ), batch_size=1)
-
         try:
             clipper_conn.register_application(app_name, "integers",
                                               "default_pred", 100000)
@@ -131,7 +130,7 @@ if __name__ == "__main__":
             mxnet_model = mx.mod.Module(softmax)
             mxnet_model.fit(data_iter, num_epoch=0)
 
-            train_data_shape = [1, 785]
+            train_data_shape = data_iter.provide_data
 
             deploy_and_test_model(
                 clipper_conn,
